@@ -8,6 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 file(GLOB CPP_FILES "*.cpp")
 
 foreach(f ${CPP_FILES})
-    get_filename_component(f_name ${f} NAME_WE)
+    get_filename_component(f_name ${f} NAME_WLE)
     add_executable(${f_name} ${f})
 endforeach()
