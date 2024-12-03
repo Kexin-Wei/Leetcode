@@ -2,6 +2,10 @@
     "files.associations": {
         "*.py": "python",
         "vector": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "format": "cpp",
+        "xiosbase": "cpp",
+        "xutility": "cpp",
+        "xstring": "cpp"
     }
 }
