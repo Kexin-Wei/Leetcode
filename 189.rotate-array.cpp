@@ -71,11 +71,19 @@ using namespace std;
 class Solution {
  public:
   void rotate(vector<int>& nums, int k) {
-    for (int i = 0; i < k; i++) {
-      int last = nums.back();
-      nums.erase(nums.end() - 1, nums.end());
-      nums.insert(nums.begin(), last);
+    int real_k = k % nums.size();
+    if (nums.size() == real_k) {
+      return;
     }
+    if (real_k == 0) {
+      return;
+    }
+    // dont understand why this is not working
+    // nums.insert(nums.begin(), nums.end() - real_k, nums.end());
+    // nums.erase(nums.end() - real_k, nums.end());
+    reverse(nums.begin(), nums.end());
+    reverse(nums.begin(), nums.begin() + real_k);
+    reverse(nums.begin() + real_k, nums.end());
   }
 };
 // @lc code=end
