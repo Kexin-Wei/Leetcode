@@ -1,3 +1,12 @@
+// @before-stub-for-debug-begin
+#include <string>
+#include <vector>
+
+#include "commoncppproblem136.h"
+
+using namespace std;
+// @before-stub-for-debug-end
+
 /*
  * @lc app=leetcode id=136 lang=cpp
  *
@@ -57,8 +66,45 @@
  */
 
 // @lc code=start
+#include <algorithm>
 class Solution {
  public:
-  int singleNumber(vector<int>& nums) { std::sort(nums.begin(), nums.end()); }
+  int singleNumber(vector<int>& nums) {
+    // method 1
+    // Your runtime beats 18.17 % of cpp submissions
+    // Your memory usage beats 58.24 % of cpp submissions (20.7 MB)
+    // if (nums.size() == 1) {
+    //   return nums[0];
+    // }
+    // std::sort(nums.begin(), nums.end());
+    // for (size_t i = 1; i < nums.size() - 1; ++i) {
+    //   if (i == 1 && nums[i - 1] != nums[i]) {
+    //     return nums[0];
+    //   }
+    //   if (nums[i - 1] != nums[i] && nums[i] != nums[i + 1]) {
+    //     return nums[i];
+    //   }
+    //   if (i == (nums.size() - 2) && nums[i] != nums[i + 1]) {
+    //     return nums[i + 1];
+    //   }
+    // }
+    // return 0;
+    // method 2
+    // Your runtime beats 8.47 % of cpp submissions
+    // Your memory usage beats 5.08 % of cpp submissions (24.4 MB)
+    // if (nums.size() == 1) return nums[0];
+    // std::set<int> wait;
+    // for (const auto& a : nums) {
+    //   if (wait.contains(a)) {
+    //     wait.erase(a);
+    //   } else {
+    //     wait.insert(a);
+    //   }
+    // }
+    // return *wait.begin();
+    int ans = 0;
+    for (const int num : nums) ans ^= num;
+    return ans;
+  }
 };
 // @lc code=end
