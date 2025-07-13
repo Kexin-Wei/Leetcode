@@ -52,23 +52,36 @@ using namespace std;
 class Solution {
  public:
   void moveZeroes(std::vector<int>& nums) {
-    int n_moved_zeros = 0;
-    std::vector<int>::iterator it = nums.begin();
-    for (; it != nums.end();) {
+    int n_zeros = 0;
+    for (vector<int>::iterator it = nums.begin(); it != nums.end();) {
       if (*it == 0) {
-        if (n_moved_zeros >= nums.size()) {
-          return;
-        }
-        if (it == nums.end() - n_moved_zeros) {
-          return;
-        }
-        nums.push_back(0);
         nums.erase(it);
-        n_moved_zeros++;
-        continue;
+        ++n_zeros;
+      } else {
+        ++it;
       }
-      it++;
     }
+    nums.insert(nums.end(), n_zeros, 0);
+    // Initialize a pointer `lastNonZeroFoundAt` to keep track of the position
+    // of the last non-zero element found.
+    // int lastNonZeroFoundAt = -1;
+    // // Get the size of the input vector `nums`.
+    // int n = nums.size();
+
+    // // Iterate over the vector.
+    // for (int currentIndex = 0; currentIndex < n; ++currentIndex) {
+    //   // Check if the current element is non-zero.
+    //   if (nums[currentIndex] != 0) {
+    //     // Increment `lastNonZeroFoundAt` and swap the current element with
+    //     the
+    //     // element at the `lastNonZeroFoundAt` index. This moves all non-zero
+    //     // elements to the front of the array in their original order.
+    //     swap(nums[++lastNonZeroFoundAt], nums[currentIndex]);
+    //   }
+    //   // If the current element is zero, nothing needs to be done; continue
+    //   to
+    //   // the next iteration.
+    // }
   }
 };
 // @lc code=end
