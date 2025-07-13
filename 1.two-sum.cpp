@@ -60,14 +60,24 @@
  */
 
 // @lc code=start
+#include <unordered_map>
 class Solution {
  public:
   vector<int> twoSum(vector<int>& nums, int target) {
-    for (int i = 0; i < nums.size(); i++) {
-      for (int j = i + 1; j < nums.size(); j++) {
-        if (i == j) continue;
-        if (nums[i] + nums[j] == target) return {i, j};
+    // for (int i = 0; i < nums.size(); i++) {
+    //   for (int j = i + 1; j < nums.size(); j++) {
+    //     if (i == j) continue;
+    //     if (nums[i] + nums[j] == target) return {i, j};
+    //   }
+    // }
+    // return {};
+    std::unordered_map<int, int> num_to_index;
+    for (int i = 0; i < nums.size(); ++i) {
+      int fd = target - nums[i];
+      if (num_to_index.contains(fd)) {
+        return {num_to_index[fd], i};
       }
+      num_to_index[nums[i]] = i;
     }
     return {};
   }
