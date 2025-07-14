@@ -103,6 +103,7 @@ class Solution {
         if (char_to_idx.find(board[i][j]) != char_to_idx.end()) {
           int box_i_range[2] = {(i / 3) * 3, (i / 3) * 3 + 2};
           int box_j_range[2] = {(j / 3) * 3, (j / 3) * 3 + 2};
+          vector<std::pair<int, int>> add_idxs;
           for (auto idx : char_to_idx[board[i][j]]) {
             if (idx.first == i || idx.second == j ||  // row & column
                 (idx.first >= box_i_range[0] && idx.first <= box_i_range[1] &&
@@ -110,8 +111,10 @@ class Solution {
                  idx.second <= box_j_range[1])) {  // box
               return false;
             }
-            char_to_idx[board[i][j]].push_back(std::pair<int, int>{i, j});
+            add_idxs.push_back(std::pair<int, int>{i, j});
           }
+          char_to_idx[board[i][j]].insert(char_to_idx[board[i][j]].end(),
+                                          add_idxs.begin(), add_idxs.end());
         } else {
           char_to_idx[board[i][j]] =
               std::vector<std::pair<int, int>>{std::pair<int, int>{i, j}};
