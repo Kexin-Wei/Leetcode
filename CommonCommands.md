@@ -26,6 +26,9 @@ std::sort(v.begin(), v.end(), [](int a, int b){ return a < b;}); // Sort the vec
 ```cpp
 string s = "Hello, World!"; // Declare a string
 v.substr(0, 5); // Get a substring from index 0 to 4 (5 characters)
+
+std::isalpha(s[0]); // Check if the first character is an alphabetic character
+std::isdigit(s[0]); // Check if the first character is a digit
 ```
 
 1. Map
