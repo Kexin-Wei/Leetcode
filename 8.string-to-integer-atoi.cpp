@@ -152,11 +152,12 @@ class Solution {
  public:
   int myAtoi(string s) {
     bool start = false;
+    char first_n = '!';
     int sign = 1;
     double n = 0;
     for (auto ch : s) {
       if (!start) {
-        if (std::isalpha(ch)) {
+        if (std::isalpha(ch) || ch == '.') {
           return 0;
         } else if (ch == '+' || std::isdigit(ch)) {
           start = true;
@@ -170,14 +171,18 @@ class Solution {
         if (std::isalpha(ch) || ch == '.') {
           break;
         }
+        if (first_n == '!') {
+          first_n = ch;
+        } else if (!std::isalpha(first_n) &&
+                   (ch == ' ' || ch == '+' || ch == '-')) {
+          break;
+        }
         if (std::isdigit(ch)) {
           int the_n = ch - '0';
           if (n == 0 && the_n == 0) {
             continue;
           }
           n = n * 10 + the_n;
-        } else if (n) {
-          // TODO
         }
       }
     }
