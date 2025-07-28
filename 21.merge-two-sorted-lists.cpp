@@ -97,7 +97,6 @@ class Solution {
     // else:
     //     if p1.val <= p2.val && p1->next.val >p2.val: insert p2 before
     //     p1->next else: p1= p1->next;
-    //
 
     // edge case
     if (list1 == nullptr) {
@@ -132,6 +131,11 @@ class Solution {
     }
 
     return list1;
+    // new way
+    // if (!list1 || !list2) return list1 ? list1 : list2;
+    // if (list1->val > list2->val) swap(list1, list2);
+    // list1->next = mergeTwoLists(list1->next, list2);
+    // return list1;
   }
 };
 // @lc code=end
