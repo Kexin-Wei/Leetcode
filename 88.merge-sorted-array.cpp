@@ -1,3 +1,12 @@
+// @before-stub-for-debug-begin
+#include <string>
+#include <vector>
+
+#include "commoncppproblem88.h"
+
+using namespace std;
+// @before-stub-for-debug-end
+
 /*
  * @lc app=leetcode id=88 lang=cpp
  *
@@ -76,10 +85,20 @@
 class Solution {
  public:
   void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-    nums1.resize(m);
-    nums1.reserve(n);
-    if (n > 0) nums1.insert(nums1.end(), nums2.begin(), nums2.begin() + n);
-    sort(nums1.begin(), nums1.end(), [](int a, int b) { return a < b; });
+    // std
+    // Your runtime beats 100 % of cpp submissions
+    // Your memory usage beats 70.49 % of cpp submissions (12.3 MB)
+    // nums1.resize(m);
+    // nums1.reserve(n);
+    // if (n > 0) nums1.insert(nums1.end(), nums2.begin(), nums2.begin() + n);
+    // sort(nums1.begin(), nums1.end(), [](int a, int b) { return a < b; });
+
+    // from the back of the nums1
+    // 1,2,3,0,0,0
+    // 2,5,6
+    for (int i = m - 1, j = n - 1, k = m + n - 1; j >= 0; k--) {
+      nums1[k] = (i >= 0 && nums1[i] > nums2[j]) ? nums1[i--] : nums2[j--];
+    }
   };
 };
 // @lc code=end
