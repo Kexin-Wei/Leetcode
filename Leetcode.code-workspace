@@ -7,5 +7,11 @@
 			"path": "../../home/codespace/.vscode-remote/data/User/globalStorage/wangtao0101.debug-leetcode"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"string_view": "cpp",
+			"string": "cpp",
+			"unordered_map": "cpp"
+		}
+	}
 }
