@@ -68,19 +68,25 @@ using namespace std;
 class Solution {
  public:
   int maxSubArray(vector<int>& nums) {
-    // brutal
-    int maxSum{nums[0]}, window{1}, tempSum{0};
-    for (int window = 1; window <= nums.size(); ++window) {
-      for (int startWindow = 0; startWindow <= nums.size() - window;
-           ++startWindow) {
-        tempSum = 0;
-        for (int i = startWindow; i < startWindow + window; ++i) {
-          tempSum += nums[i];
-        }
-        maxSum = max(tempSum, maxSum);
-      }
+    // brutal, time limited
+    // int maxSum{nums[0]}, window{1}, tempSum{0};
+    // for (int window = 1; window <= nums.size(); ++window) {
+    //   for (int startWindow = 0; startWindow <= nums.size() - window;
+    //        ++startWindow) {
+    //     tempSum = 0;
+    //     for (int i = startWindow; i < startWindow + window; ++i) {
+    //       tempSum += nums[i];
+    //     }
+    //     maxSum = max(tempSum, maxSum);
+    //   }
+    // }
+    // return maxSum;
+    int sum{nums[0]}, f{nums[0]};
+    for (size_t i = 1; i < nums.size(); ++i) {
+      f = max(f, 0) + nums[i];
+      sum = max(sum, f);
     }
-    return maxSum;
+    return sum;
   }
 };
 // @lc code=end
